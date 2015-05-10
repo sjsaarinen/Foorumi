@@ -33,5 +33,5 @@ FoorumApp.run(function($rootScope, $location, Api){
       $location.path('/login');
       $rootScope.userLoggedIn = null;
     });
-  }
+  };
 });
