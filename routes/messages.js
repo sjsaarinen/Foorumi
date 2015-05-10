@@ -12,7 +12,7 @@ router.get('/:id', function(req, res, next) {
   var messageId = req.params.id;
   Models.Message.findOne({
       where: { id: messageId },
-      inlcude: {
+      include: {
           model: Models.Reply
       }
   }).then(function(message){
@@ -26,6 +26,7 @@ router.post('/:id/reply', function(req, res, next){
   var messageId = req.params.id;
   // ...tämä vastaus (Vinkki: lisää ensin replyToAdd-objektiin kenttä MessageId, jonka arvo on messageId-muuttujan arvo ja käytä sen jälkeen create-funktiota)
   var replyToAdd = req.body;
+  console.log(replyToAdd);
   // Palauta vastauksena lisätty vastaus
   replyToAdd.MessageId = messageId;
   Models.Reply.create(replyToAdd).then(function(reply){
